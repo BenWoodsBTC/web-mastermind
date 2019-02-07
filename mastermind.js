@@ -1,16 +1,4 @@
 /* Class Mastermind */
-// NOTE: This file stores the guess and turns in thisTurn, and stores thisTurn in turnRecords.  
-// Test to ensure data is stored correctly.
-
-/* Initializations */
-// colors, code, guess, feedback (arrays) and turn (0);
-// populate colors = r,b,g,w,c,y
-var colors=[], code=[], guess=[], feedback=[];
-var turn=0;
-colors = ["r","b","g","w","c","y"];
-// add arrays for thisTurn, turnRecords
-var thisTurn = [], turnRecords = [];
-var alertString="";
 
 // define Main function
 function main() {
@@ -54,7 +42,7 @@ function setCode(colors){
 	for(var i=0; i<4; i++){
 		code[i]=colors[Math.floor(Math.random()*6)];
 	}
-	console.log(code);
+	console.log("secret code "+code);
 	return code;
 }
 
@@ -102,7 +90,7 @@ function testGuess(code,guess){
 		}
 	}
 	// console.log the feedback
-	console.log("Blacks = "+b+" and Whites equals "+w);
+	// console.log("Blacks = "+b+" and Whites equals "+w);
 	// call the feedback function, sending it black and white counts
 	var feedback=formatFeedback(b,w);
 	// return the feedback
@@ -138,7 +126,7 @@ function addTurn(guess,feedback){
 		}
 	} // end loop	
 	// console log thisTurn
-	console.log("thisTurn = "+thisTurn);
+	// console.log("thisTurn = "+thisTurn);
   // NOTE: Once you get thisTurn console logged, comment out ALL OTHER console.logs except the code
 	// return thisTurn
 	return thisTurn;
@@ -152,7 +140,6 @@ function formatTurnRecords(turnRecords,alertString){
 	// initialize thisFeedback string
 	var thisFeedback = "";
 	// clear alertString
-	alertString="";
 	// turnRecords is a 2D array. Each row is one turn. Loop over each turn.
 	for (var row=0;row<turn;row++) {
 		// For each row, start with “Guess”, then turn number (row + 1) plus colon “:” 
@@ -168,7 +155,7 @@ function formatTurnRecords(turnRecords,alertString){
 		// Add thisFeedback to alertString
 		alertString = alertString.concat(thisFeedback);
 		// Add a line break to alertString
-		alertString = alertString.concat("\n");
+		alertString = alertString.concat("<br />\n");
 		// end loop
 	}
 	// return alertString
